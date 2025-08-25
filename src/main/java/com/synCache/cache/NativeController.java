@@ -1,8 +1,9 @@
-package com.syncCache.cache;
+package com.synCache.cache;
+
 
 public class NativeController implements AutoCloseable {
     static {
-        System.loadLibrary("javaSynCache");
+        System.load(LibraryLoader.getLibraryPath());
     }
 
     private long nativeHandle;

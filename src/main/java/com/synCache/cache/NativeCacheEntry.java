@@ -1,9 +1,6 @@
-package com.syncCache.cache;
+package com.synCache.cache;
 
 public class NativeCacheEntry implements AutoCloseable {
-    static {
-        System.loadLibrary("javaSynCache");
-    }
 
     // Opaque pointer to C++ CacheEntry
     private long nativeHandle;

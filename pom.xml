@@ -24,7 +24,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.syncCache.Main</mainClass> <!-- Replace with your main class -->
+                            <mainClass>com.synCache.Main</mainClass> <!-- Replace with your main class -->
                         </manifest>
                     </archive>
                 </configuration>
