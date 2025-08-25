@@ -11,4 +11,4 @@ WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
 COPY src/main/resources/lib/linux/arm/libjavaSynCache.so /usr/lib/libjavaSynCache.so
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java","--enable-native-access=ALL-UNNAMED", "-jar", "/app/app.jar"]
