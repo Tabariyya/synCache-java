@@ -10,14 +10,14 @@ Java bindings for **SyncCache**.
 Run the helper script to clone or refresh the core library:
 
 ```bash
-bash synCache-java/sh_scripts/renew_core_library.sh
+  bash sh_scripts/renew_core_library.sh
 ```
 
 ### 2) Rebuild the linked library (and add it to your PATH)
 Build the linked library and update your PATH via:
 
 ```bash
-bash synCache-java/sh_scripts/renew_linked_library.sh
+  bash sh_scripts/renew_linked_library.sh
 ```
 
 ---
@@ -26,7 +26,7 @@ bash synCache-java/sh_scripts/renew_linked_library.sh
 Build the Docker image (includes running the project/tests inside the container as configured):
 
 ```bash
-docker build -t synccache-java .
+  docker build -t synccache-java .
 ```
 
 ---
@@ -35,7 +35,7 @@ docker build -t synccache-java .
 Use the provided IntelliJ configuration (includes Docker integration and pre-built run configurations):
 
 ```bash
-rm -rf .idea || true && cp -r ide_settings .idea
+  rm -rf .idea || true && cp -r ide_settings .idea
 ```
 
 > After copying, open the project in IntelliJ and select the included run configurations.
