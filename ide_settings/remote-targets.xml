@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="RemoteTargetsManager">
+    <option name="projectDefaultTargetUuid" value="49d29d9e-205e-415f-9529-22ea618da274" />
     <targets>
       <target name="openjdk:24-jdk-slim" type="docker" uuid="49d29d9e-205e-415f-9529-22ea618da274">
         <config>
