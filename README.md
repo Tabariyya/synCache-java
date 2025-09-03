@@ -10,14 +10,14 @@ Java bindings for **SyncCache**.
 Run the helper script to clone or refresh the core library:
 
 ```bash
-  bash synCache-java/sh_scripts/renew_core_library.sh
+  bash sh_scripts/renew_core_library.sh
 ```
 
 ### 2) Rebuild the linked library (and add it to your PATH)
 Build the linked library and update your PATH via:
 
 ```bash
-  bash synCache-java/sh_scripts/renew_linked_library.sh
+  bash sh_scripts/renew_linked_library.sh
 ```
 
 ---
