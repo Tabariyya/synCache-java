@@ -11,7 +11,7 @@ public class synCacheTest {
         ctrl.set(e);
         System.out.println("sleeping");
         Thread.sleep(10000);
-        String v = ctrl.get("ns", "1");
+        String v = ctrl.get("ns", "1", String.class);
         System.out.println("value=" + v);
         Thread.sleep(10000);
 
