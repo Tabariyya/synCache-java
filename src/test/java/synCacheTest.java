@@ -7,7 +7,7 @@ public class synCacheTest {
     @Test
     void test1() throws InterruptedException {
         NativeController ctrl = new NativeController("amqp://guest:guest@91.93.135.176:25672/", 100);
-        NativeCacheEntry e = new NativeCacheEntry("1", "ns", "value", /*ttl*/ null);
+        NativeCacheEntry e = new NativeCacheEntry("ns", "1", "value", /*ttl*/ null);
         ctrl.set(e);
         System.out.println("sleeping");
         Thread.sleep(10000);
