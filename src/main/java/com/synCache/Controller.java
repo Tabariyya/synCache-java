@@ -12,8 +12,8 @@ public class Controller implements AutoCloseable {
     private long nativeHandle;
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public Controller(String rabbitMqConnectionUri, long maxNoOfEntries) {
-        this.nativeHandle = create(rabbitMqConnectionUri, maxNoOfEntries);
+    public Controller(String rabbitMqConnectionUri, long maxNoOfEntries, boolean async) {
+        this.nativeHandle = create(rabbitMqConnectionUri, maxNoOfEntries, async);
     }
 
     public void set(CacheEntry entry) {
@@ -48,7 +48,7 @@ public class Controller implements AutoCloseable {
     }
 
     // ---- Native declarations ----
-    private static native long create(String uri, long maxEntries);
+    private static native long create(String uri, long maxEntries, boolean async);
 
     private static native void destroy(long handle);
 
