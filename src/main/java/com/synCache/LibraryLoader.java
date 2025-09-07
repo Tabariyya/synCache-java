@@ -1,4 +1,4 @@
-package com.synCache.cache;
+package com.synCache;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,7 +13,7 @@ public class LibraryLoader {
             String libPath = getLinkedLibraryPath();
 
             // Open as stream
-            InputStream in = NativeCacheEntry.class.getResourceAsStream(libPath);
+            InputStream in = CacheEntry.class.getResourceAsStream(libPath);
 
             // Create temp file
             File temp = Files.createTempFile("libjavaSynCache", ".so").toFile();
