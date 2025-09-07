@@ -1,10 +1,10 @@
-package com.synCache.cache;
+package com.synCache;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class NativeController implements AutoCloseable {
+public class Controller implements AutoCloseable {
     static {
         System.load(LibraryLoader.getLibraryPath());
     }
@@ -12,19 +12,19 @@ public class NativeController implements AutoCloseable {
     private long nativeHandle;
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public NativeController(String rabbitMqConnectionUri, long maxNoOfEntries) {
-        this.nativeHandle = nCreate(rabbitMqConnectionUri, maxNoOfEntries);
+    public Controller(String rabbitMqConnectionUri, long maxNoOfEntries) {
+        this.nativeHandle = create(rabbitMqConnectionUri, maxNoOfEntries);
     }
 
-    public void set(NativeCacheEntry entry) {
-        nSet(nativeHandle, entry.handle());
+    public void set(CacheEntry entry) {
+        set(nativeHandle, entry.getNameSpace(), entry.getId(), entry.getValue(), entry.getTtl());
     }
 
     /**
      * Returns value string or null if not present
      */
     public <T> T get(String nameSpace, String id, Class<T> clazz) {
-        String json = nGet(nativeHandle, nameSpace, id);
+        String json = get(nativeHandle, nameSpace, id);
 
         // mapper.readValue takes a String and a Class<T>
         try {
@@ -35,26 +35,26 @@ public class NativeController implements AutoCloseable {
     }
 
     public void evict(String nameSpace, String id) {
-        nEvict(nativeHandle, nameSpace, id);
+        evict(nativeHandle, nameSpace, id);
     }
 
     @Override
     public void close() {
         long h = nativeHandle;
         if (h != 0) {
-            nDestroy(h);
+            destroy(h);
             nativeHandle = 0;
         }
     }
 
     // ---- Native declarations ----
-    private static native long nCreate(String uri, long maxEntries);
+    private static native long create(String uri, long maxEntries);
 
-    private static native void nDestroy(long handle);
+    private static native void destroy(long handle);
 
-    private static native void nSet(long controllerHandle, long entryHandle);
+    private static native void set(long controllerHandle, String nameSpace, String id, String value, Long ttl);
 
-    private static native String nGet(long controllerHandle, String nameSpace, String id);
+    private static native String get(long controllerHandle, String nameSpace, String id);
 
-    private static native void nEvict(long controllerHandle, String nameSpace, String id);
+    private static native void evict(long controllerHandle, String nameSpace, String id);
 }
