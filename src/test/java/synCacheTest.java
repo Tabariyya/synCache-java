@@ -1,13 +1,13 @@
-import com.synCache.cache.NativeCacheEntry;
-import com.synCache.cache.NativeController;
+import com.synCache.CacheEntry;
+import com.synCache.Controller;
 import org.junit.jupiter.api.Test;
 
 public class synCacheTest {
 
     @Test
     void test1() throws InterruptedException {
-        NativeController ctrl = new NativeController("amqp://guest:guest@91.93.135.176:25672/", 100);
-        NativeCacheEntry e = new NativeCacheEntry("ns", "1", "value", /*ttl*/ null);
+        Controller ctrl = new Controller("amqp://guest:guest@91.93.135.176:25672/", 100);
+        CacheEntry<String> e = new CacheEntry<>("ns", "1", "value", null);
         ctrl.set(e);
         System.out.println("sleeping");
         Thread.sleep(10000);
