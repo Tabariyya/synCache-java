@@ -1,16 +1,12 @@
 package com.synCache;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 public class Controller implements AutoCloseable {
     static {
         System.load(LibraryLoader.getLibraryPath());
     }
 
     private long nativeHandle;
-    private final ObjectMapper mapper = new ObjectMapper();
 
     public Controller(String rabbitMqConnectionUri, long maxNoOfEntries, boolean async) {
         this.nativeHandle = create(rabbitMqConnectionUri, maxNoOfEntries, async);
@@ -20,18 +16,13 @@ public class Controller implements AutoCloseable {
         set(nativeHandle, entry.getNameSpace(), entry.getId(), entry.getValue(), entry.getTtl());
     }
 
-    /**
-     * Returns value string or null if not present
-     */
-    public <T> T get(String nameSpace, String id, Class<T> clazz) {
-        String json = get(nativeHandle, nameSpace, id);
 
-        // mapper.readValue takes a String and a Class<T>
-        try {
-            return mapper.readValue(json, clazz);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+    public <T> T get(String nameSpace, String id, Class<T> clazz) {
+        byte[] json = get(nativeHandle, nameSpace, id);
+        if (json == null) {
+            return null;
         }
+        return Serializer.fromBytes(json, clazz);
     }
 
     public void evict(String nameSpace, String id) {
@@ -52,9 +43,9 @@ public class Controller implements AutoCloseable {
 
     private static native void destroy(long handle);
 
-    private static native void set(long controllerHandle, String nameSpace, String id, String value, Long ttl);
+    private static native void set(long controllerHandle, String nameSpace, String id, byte[] value, Long ttl);
 
-    private static native String get(long controllerHandle, String nameSpace, String id);
+    private static native byte[] get(long controllerHandle, String nameSpace, String id);
 
     private static native void evict(long controllerHandle, String nameSpace, String id);
 }

@@ -17,7 +17,7 @@ Run the helper script to clone or refresh the core library:
 Build the linked library and update your PATH via:
 
 ```bash
-  bash sh_scripts/renew_linked_library.sh
+  bash sh_scripts/build_linked_library.sh
 ```
 
 ---
