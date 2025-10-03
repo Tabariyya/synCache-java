@@ -1,24 +1,17 @@
 package com.synCache;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class CacheEntry<T> {
+public class CacheEntry {
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
     private final String nameSpace;
     private final String id;
-    private final String value;
+    private final byte[] value;
     private final Long ttl;
 
-    public CacheEntry(String nameSpace, String id, T value, Long ttl) {
+    public CacheEntry(String nameSpace, String id, Object value, Long ttl) {
         this.nameSpace = nameSpace;
         this.id = id;
-        try {
-            this.value = objectMapper.writeValueAsString(value);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        this.value = Serializer.toBytes(value);
         this.ttl = ttl;
     }
 
@@ -30,7 +23,7 @@ public class CacheEntry<T> {
         return id;
     }
 
-    public String getValue() {
+    public byte[] getValue() {
         return value;
     }
 
