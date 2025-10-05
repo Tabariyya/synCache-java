@@ -28,35 +28,10 @@ jobs:
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
           gpg --list-keys
 
-      # 4️⃣ Create Maven settings.xml with credentials and signing profile
-      - name: Setup Maven settings
-        env:
-          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      - name: Write Maven settings.xml from secret
         run: |
           mkdir -p ~/.m2
-          cat <<'EOF' > ~/.m2/settings.xml
-<settings>
-    <servers>
-        <server>
-            <id>central</id>
-            <username>${OSSRH_USERNAME}</username>
-            <password>${OSSRH_PASSWORD}</password>
-        </server>
-    </servers>
-
-    <profiles>
-        <profile>
-            <id>sign-artifacts</id>
-            <properties>
-                <gpg.executable>gpg</gpg.executable>
-                <gpg.passphrase>${GPG_PASSPHRASE}</gpg.passphrase>
-            </properties>
-        </profile>
-    </profiles>
-</settings>
-EOF
+          echo "${{ secrets.MAVEN_SETTINGS_XML }}" > ~/.m2/settings.xml
 
       # 5️⃣ Build, sign, and deploy artifacts to OSSRH
       - name: Build and deploy to Sonatype OSSRH
