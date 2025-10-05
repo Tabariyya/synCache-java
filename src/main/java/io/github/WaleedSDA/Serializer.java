@@ -1,4 +1,4 @@
-package com.synCache;
+package io.github.WaleedSDA;
 
 import com.dslplatform.json.DslJson;
 
