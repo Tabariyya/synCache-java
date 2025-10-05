@@ -37,26 +37,26 @@ jobs:
         run: |
           mkdir -p ~/.m2
           cat <<EOF > ~/.m2/settings.xml
-          <settings>
-              <servers>
-                  <server>
-                      <id>central</id>
-                      <username>\${OSSRH_USERNAME}</username>
-                      <password>\${OSSRH_PASSWORD}</password>
-                  </server>
-              </servers>
-            
-              <profiles>
-                  <profile>
-                    <id>sign-artifacts</id>
-                    <properties>
-                        <gpg.executable>gpg</gpg.executable>
-                        <gpg.passphrase>\${GPG_PASSPHRASE}</gpg.passphrase>
-                    </properties>
-                  </profile>
-              </profiles>
-          </settings>
-          EOF
+<settings>
+    <servers>
+        <server>
+            <id>central</id>
+            <username>\${OSSRH_USERNAME}</username>
+            <password>\${OSSRH_PASSWORD}</password>
+        </server>
+    </servers>
+  
+    <profiles>
+        <profile>
+          <id>sign-artifacts</id>
+          <properties>
+              <gpg.executable>gpg</gpg.executable>
+              <gpg.passphrase>\${GPG_PASSPHRASE}</gpg.passphrase>
+          </properties>
+        </profile>
+    </profiles>
+</settings>
+EOF
 
       # 5️⃣ Build, sign, and deploy artifacts to OSSRH
       - name: Build and deploy to Sonatype OSSRH
