@@ -2,8 +2,7 @@ name: Build and Publish
 
 on:
   push:
-    tags:
-      - 'v*' # triggers on tags like v1.0.0
+    branches: [ "actions" ]
 
 jobs:
   build-and-publish:
