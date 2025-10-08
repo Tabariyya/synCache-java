@@ -1,4 +1,4 @@
-package io.github.WaleedSDA;
+package io.github.WaleedSDA.synCache;
 
 
 public class CacheEntry {

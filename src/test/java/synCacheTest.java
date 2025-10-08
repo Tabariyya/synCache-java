@@ -1,5 +1,5 @@
-import io.github.WaleedSDA.CacheEntry;
-import io.github.WaleedSDA.Controller;
+import io.github.WaleedSDA.synCache.CacheEntry;
+import io.github.WaleedSDA.synCache.Controller;
 import org.junit.jupiter.api.Test;
 //import org.redisson.Redisson;
 //import org.redisson.api.LocalCachedMapOptions;
