@@ -1,3 +1,5 @@
+package models;
+
 import com.dslplatform.json.CompiledJson;
 
 @CompiledJson
