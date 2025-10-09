@@ -1,5 +1,6 @@
 import io.github.WaleedSDA.synCache.CacheEntry;
 import io.github.WaleedSDA.synCache.Controller;
+import models.User;
 import org.junit.jupiter.api.Test;
 //import org.redisson.Redisson;
 //import org.redisson.api.LocalCachedMapOptions;
@@ -11,20 +12,6 @@ import java.time.Duration;
 import java.time.Instant;
 
 public class synCacheTest {
-
-
-    @Test
-    void test1() throws InterruptedException {
-        Controller ctrl = new Controller("amqp://guest:guest@91.93.135.176:25672/", 100, false);
-        CacheEntry e = new CacheEntry("ns", "1", "value", null);
-        ctrl.set(e);
-        System.out.println("sleeping");
-        Thread.sleep(10000);
-        String v = (String) ctrl.get("ns", "1", String.class);
-        System.out.println("value=" + v);
-        Thread.sleep(10000);
-
-    }
 
 
     @Test
@@ -58,16 +45,16 @@ public class synCacheTest {
 //        RedissonClient redisson = Redisson.create(config);
 //
 //        // 2. Configure LocalCachedMap
-//        LocalCachedMapOptions<Object, User> options = LocalCachedMapOptions.<Object, User>defaults()
+//        LocalCachedMapOptions<Object, models.User> options = LocalCachedMapOptions.<Object, models.User>defaults()
 //                .timeToLive(10, TimeUnit.SECONDS)
 //                .maxIdle(5, TimeUnit.SECONDS)
 //                .cacheSize(100)
 //                .syncStrategy(LocalCachedMapOptions.SyncStrategy.UPDATE);
 //
-//        RLocalCachedMap<Object, User> localCachedMap = redisson.getLocalCachedMap("myMap", options);
+//        RLocalCachedMap<Object, models.User> localCachedMap = redisson.getLocalCachedMap("myMap", options);
 //
 //        // 3. Put data into cache
-//        User user = new User();
+//        models.User user = new models.User();
 //        user.setEmail("guest@guest");
 //        user.setUsername("guest");
 //
