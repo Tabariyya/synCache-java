@@ -1,4 +1,3 @@
-import io.github.WaleedSDA.synCache.CacheEntry;
 import io.github.WaleedSDA.synCache.Controller;
 import models.User;
 import org.junit.jupiter.api.Test;
@@ -17,8 +16,7 @@ public class synCacheTest {
         User user = new User();
         user.setEmail("guest@guest");
         user.setUsername("guest");
-        CacheEntry e = new CacheEntry("ns", "1", user);
-        ctrl.set(e);
+        ctrl.set("ns", "1", user);
         for (int i = 0; i < 25000; i++) {
             ctrl.get("ns", "1", User.class);
         }
