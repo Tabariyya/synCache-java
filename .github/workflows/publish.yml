@@ -39,6 +39,7 @@ jobs:
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: |
+          apt update && apt install mono-complete
           mvn clean deploy -DskipTests -P sign-artifacts \
               -Dgpg.executable=gpg \
               -Dgpg.passphrase="$GPG_PASSPHRASE"
