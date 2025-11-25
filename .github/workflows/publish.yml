@@ -1,13 +1,9 @@
 name: Build and Publish
 
-#on:
-#  push:
-#    tags:
-#      - 'v*'
-
 on:
   push:
-    branches: [ "new-broker" ]
+    tags:
+      - 'v*'
 
 jobs:
   build-and-publish:
