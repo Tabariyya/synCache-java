@@ -8,11 +8,18 @@ public class CacheEntry {
     private final byte[] value;
     private final Long ttl;
 
-    public CacheEntry(String nameSpace, String id, Object value, Long ttl) {
+    public CacheEntry(String nameSpace, String id, Object value, long ttl) {
         this.nameSpace = nameSpace;
         this.id = id;
         this.value = Serializer.toBytes(value);
         this.ttl = ttl;
+    }
+
+    public CacheEntry(String nameSpace, String id, Object value) {
+        this.nameSpace = nameSpace;
+        this.id = id;
+        this.value = Serializer.toBytes(value);
+        this.ttl = null;
     }
 
     public String getNameSpace() {
