@@ -9,7 +9,7 @@ public class LibraryLoader {
         try {
             String libPath = getLinkedLibraryPath();
 
-            InputStream in = CacheEntry.class.getResourceAsStream(libPath);
+            InputStream in = Controller.class.getResourceAsStream(libPath);
             if (in == null) {
                 throw new IllegalStateException("Library not found: " + libPath);
             }

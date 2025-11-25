@@ -11,8 +11,12 @@ public class Controller {
         nCreate(brokerUrl, BrokerToken, maxNoOfEntries);
     }
 
-    public void set(CacheEntry entry) {
-        nSet(entry.getNameSpace(), entry.getId(), entry.getValue(), entry.getTtl());
+    public void set(String nameSpace, String id, Object value, Long ttl) {
+        nSet(nameSpace, id, Serializer.toBytes(value), ttl);
+    }
+
+    public void set(String nameSpace, String id, Object value) {
+        nSet(nameSpace, id, Serializer.toBytes(value), null);
     }
 
 
