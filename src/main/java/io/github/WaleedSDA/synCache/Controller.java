@@ -7,8 +7,8 @@ public class Controller {
     }
 
 
-    public Controller(String rabbitMqConnectionUri, long maxNoOfEntries, boolean async) {
-        nCreate(rabbitMqConnectionUri, maxNoOfEntries, async);
+    public Controller(String brokerUrl, String BrokerToken, long maxNoOfEntries) {
+        nCreate(brokerUrl, BrokerToken, maxNoOfEntries);
     }
 
     public void set(CacheEntry entry) {
@@ -30,7 +30,7 @@ public class Controller {
 
 
     // ---- Native declarations ----
-    private native void nCreate(String uri, long maxEntries, boolean async);
+    private native void nCreate(String uri, String BrokerToken, long maxEntries);
 
     private native void nSet(String nameSpace, String id, byte[] value, Long ttl);
 
