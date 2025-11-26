@@ -1,4 +1,4 @@
-import io.github.WaleedSDA.synCache.Controller;
+import io.github.waleedsda.synCache.Controller;
 import models.User;
 import org.junit.jupiter.api.Test;
 
