@@ -38,7 +38,5 @@ jobs:
           sudo apt update
           sudo apt install -y gnupg ca-certificates mono-complete
   
-          mvn clean deploy -DskipTests -P sign-artifacts \
-              -Dgpg.executable=gpg \
-              -Dgpg.passphrase="$GPG_PASSPHRASE"
+          mvn clean deploy -Prelease -DskipTests -P sign-artifacts -Dgpg.executable=gpg -Dgpg.passphrase="$GPG_PASSPHRASE"
 
