@@ -56,11 +56,15 @@ public class LibraryLoader {
 
     private static String getLibExtension() {
         String os = detectOS();
-        return switch (os) {
-            case "windows" -> ".dll";
-            case "macOS" -> ".dylib";
-            case "linux" -> ".so";
-            default -> throw new IllegalStateException("Unexpected OS: " + os);
-        };
+        switch (os) {
+            case "windows":
+                return ".dll";
+            case "macOS":
+                return ".dylib";
+            case "linux":
+                return ".so";
+            default:
+                throw new IllegalStateException("Unexpected OS: " + os);
+        }
     }
 }
