@@ -14,7 +14,7 @@ public class LibraryLoader {
                 throw new IllegalStateException("Library not found: " + libPath);
             }
 
-            File tempFile = Files.createTempFile("libjavaSynCache", getLibExtension()).toFile();
+            File tempFile = Files.createTempFile("synCache", "").toFile();
             tempFile.deleteOnExit();
 
             try (FileOutputStream out = new FileOutputStream(tempFile)) {
@@ -24,7 +24,6 @@ public class LibraryLoader {
                     out.write(buffer, 0, bytesRead);
                 }
             }
-
             return tempFile.getAbsolutePath();
         } catch (IOException e) {
             throw new RuntimeException("Failed to load native library", e);
@@ -34,9 +33,8 @@ public class LibraryLoader {
     private static String getLinkedLibraryPath() {
         String os = detectOS();
         String arch = detectArch();
-        String extension = getLibExtension();
 
-        return String.format("/lib/%s/%s/libjavaSynCache%s", os, arch, extension);
+        return String.format("/lib/%s/%s/synCache", os, arch);
     }
 
     private static String detectOS() {
@@ -49,22 +47,8 @@ public class LibraryLoader {
 
     private static String detectArch() {
         String arch = System.getProperty("os.arch").toLowerCase();
-        if (arch.contains("arm") || arch.contains("aarch64")) return "arm";
+        if (arch.contains("arm") || arch.contains("aarch64")) return "arm64";
         if (arch.contains("64")) return "x64";
         throw new UnsupportedOperationException("Unsupported architecture: " + arch);
-    }
-
-    private static String getLibExtension() {
-        String os = detectOS();
-        switch (os) {
-            case "windows":
-                return ".dll";
-            case "macOS":
-                return ".dylib";
-            case "linux":
-                return ".so";
-            default:
-                throw new IllegalStateException("Unexpected OS: " + os);
-        }
     }
 }

@@ -2,9 +2,9 @@
 ARCH=$(uname -m)
 echo "$ARCH"
 if [ "$ARCH" = "aarch64" ]; then
-    filename="arm"
+    filename="arm64"
 elif [ "$ARCH" = "arm64" ]; then
-    filename="arm"
+    filename="arm64"
 elif [ "$ARCH" = "x86_64" ]; then
     filename="x64"
 elif [ "$ARCH" = "amd64" ]; then
@@ -14,9 +14,7 @@ else
     exit 1;
 fi
 
-cd "$(dirname "$0")/../SynCache"
-docker build -t syncache-temp .
-docker create --name tmpcontainer syncache-temp
+cd "$(dirname "$0")"
+bash ../SynCache/bindings/java/build.sh
 
-docker cp tmpcontainer:/app/libjavaSynCache.so ../src/main/resources/lib/linux/${filename}/libjavaSynCache.so
-docker rm tmpcontainer
+mv ../SynCache/bindings/java/libjavaSynCache.so ../src/main/resources/lib/linux/${filename}/lib
