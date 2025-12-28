@@ -1,4 +1,4 @@
-package io.github.waleedsda.synCache;
+package com.tabariyya.synCache;
 
 
 public class Controller {

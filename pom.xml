@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.waleedsda</groupId>
-    <artifactId>synCache-java</artifactId>
-    <version>1.0.4</version>
+    <groupId>com.tabariyya</groupId>
+    <artifactId>synCache</artifactId>
+    <version>0.0.1</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -13,9 +13,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <name>io.github.waleedsda</name>
+    <name>com.tabariyya</name>
     <description>Custom auth for java</description>
-    <url>https://github.com/WaleedSDA/synCache-java.git</url>
+    <url>https://github.com/tabariyya/synCache-java.git</url>
 
     <licenses>
         <license>
@@ -27,16 +27,16 @@
 
     <developers>
         <developer>
-            <id>WaleedSDA</id>
+            <id>Waleed</id>
             <name>Waleed Shanaa</name>
-            <email>waleed.shanaa@outlook.com</email>
+            <email>waleed.shanaa@tabariyya.com</email>
         </developer>
     </developers>
 
     <scm>
-        <url>https://github.com/WaleedSDA/synCache-java</url>
-        <connection>scm:git:git://github.com/WaleedSDA/synCache-java.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:WaleedSDA/synCache-java.git</developerConnection>
+        <url>https://github.com/tabariyya/synCache-java</url>
+        <connection>scm:git:git://github.com/tabariyya/synCache-java.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:tabariyya/synCache-java.git</developerConnection>
     </scm>
 
     <dependencies>
