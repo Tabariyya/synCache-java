@@ -1,26 +1,19 @@
 package models;
 
 public class User {
-
-    private Long id;
-
-    private String username;
-
     private String email;
+    private String username;
+    private int age;
 
-    public User() {}
+    public User() {
+    }
 
-    public User(String username, String email) {
-        this.username = username;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -31,11 +24,11 @@ public class User {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public int getAge() {
+        return age;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAge(int age) {
+        this.age = age;
     }
 }

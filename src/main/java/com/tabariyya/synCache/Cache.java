@@ -1,13 +1,13 @@
 package com.tabariyya.synCache;
 
 
-public class Controller {
+public class Cache {
     static {
         System.load(LibraryLoader.getLibraryPath());
     }
 
 
-    public Controller(String brokerUrl, String BrokerToken, long maxNoOfEntries) {
+    public Cache(String brokerUrl, String BrokerToken, long maxNoOfEntries) {
         nCreate(brokerUrl, BrokerToken, maxNoOfEntries);
     }
 
@@ -33,6 +33,15 @@ public class Controller {
     }
 
 
+    public void evict(String nameSpace) {
+        nEvictAllInNameSpace(nameSpace);
+    }
+
+    public void evict() {
+        nEvictAll();
+    }
+
+
     // ---- Native declarations ----
     private native void nCreate(String uri, String BrokerToken, long maxEntries);
 
@@ -41,4 +50,10 @@ public class Controller {
     private native byte[] nGet(String nameSpace, String id);
 
     private native void nEvict(String nameSpace, String id);
+
+    private native void nEvictAllInNameSpace(String nameSpace);
+
+    private native void nEvictAll();
+
+
 }

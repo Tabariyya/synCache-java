@@ -1,4 +1,4 @@
-import com.tabariyya.synCache.Controller;
+import com.tabariyya.synCache.Cache;
 import models.User;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ public class synCacheTest {
 
     @Test
     void benchmarkSynCache() {
-        Controller ctrl = new Controller("wss://broker.syncache.tabariyya.com/", token, 100);
+        Cache ctrl = new Cache("wss://broker.syncache.tabariyya.com/", token, 100);
         User user = new User();
         user.setEmail("guest@guest");
         user.setUsername("guest");

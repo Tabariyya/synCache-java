@@ -67,30 +67,6 @@
 
     <profiles>
         <profile>
-            <id>test</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.11.0</version>
-                        <configuration>
-                            <source>1.8</source>
-                            <target>1.8</target>
-                            <annotationProcessorPaths>
-                                <path>
-                                    <groupId>com.dslplatform</groupId>
-                                    <artifactId>dsl-json-processor</artifactId>
-                                    <version>1.10.0</version>
-                                </path>
-                            </annotationProcessorPaths>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-
-        </profile>
-        <profile>
             <id>release</id>
             <build>
                 <plugins>
