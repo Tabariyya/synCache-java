@@ -5,5 +5,8 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
+ARG BROKER_TOKEN
+ENV BROKER_TOKEN=${BROKER_TOKEN}
+
 RUN mvn clean install -P test
 

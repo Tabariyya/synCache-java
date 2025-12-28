@@ -17,4 +17,4 @@ fi
 cd "$(dirname "$0")"
 bash ../SynCache/bindings/java/build.sh
 
-mv ../SynCache/bindings/java/libjavaSynCache.so ../src/main/resources/lib/linux/${filename}/lib
+mv ../SynCache/bindings/java/libjavaSynCache.so ../src/main/resources/lib/linux/${filename}/synCache

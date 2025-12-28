@@ -1,4 +1,4 @@
-import io.github.waleedsda.synCache.Controller;
+import com.tabariyya.synCache.Controller;
 import models.User;
 import org.junit.jupiter.api.Test;
 
@@ -7,12 +7,12 @@ import java.time.Instant;
 
 public class synCacheTest {
 
-    String token = "REMOVED_SECRET";
+    String token = System.getenv("BROKER_TOKEN");
 
 
     @Test
     void benchmarkSynCache() {
-        Controller ctrl = new Controller("ws://91.93.135.176:25672/", token, 100);
+        Controller ctrl = new Controller("wss://broker.syncache.tabariyya.com/", token, 100);
         User user = new User();
         user.setEmail("guest@guest");
         user.setUsername("guest");

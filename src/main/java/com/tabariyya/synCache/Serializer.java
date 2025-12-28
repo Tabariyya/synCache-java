@@ -1,6 +1,7 @@
-package io.github.waleedsda.synCache;
+package com.tabariyya.synCache;
 
 import com.dslplatform.json.DslJson;
+import com.dslplatform.json.runtime.Settings;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,9 +12,9 @@ public class Serializer {
     // DSL-JSON is not thread-safe → use ThreadLocal
     private static final ThreadLocal<DslJson<Object>> dslThreadLocal =
             ThreadLocal.withInitial(DslJson::new);
+    private static final DslJson<Object> dslJson = new DslJson<>(Settings.withRuntime());
 
     public static <T> byte[] toBytes(T obj) {
-        DslJson<Object> dslJson = dslThreadLocal.get();
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             dslJson.serialize(obj, baos);
             return baos.toByteArray();
@@ -23,7 +24,6 @@ public class Serializer {
     }
 
     public static <T> T fromBytes(byte[] bytes, Class<T> clazz) {
-        DslJson<Object> dslJson = dslThreadLocal.get();
         try {
             return dslJson.deserialize(clazz, new ByteArrayInputStream(bytes));
         } catch (IOException e) {

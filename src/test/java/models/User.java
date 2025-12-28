@@ -1,8 +1,5 @@
 package models;
 
-import com.dslplatform.json.CompiledJson;
-
-@CompiledJson
 public class User {
 
     private Long id;

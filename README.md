@@ -26,7 +26,7 @@ Build the linked library and update your PATH via:
 Build the Docker image (includes running the project/tests inside the container as configured):
 
 ```bash
-  docker build -t synccache-java .
+  docker build --build-arg BROKER_TOKEN=<replace with token> -t synccache-java .
 ```
 
 ---

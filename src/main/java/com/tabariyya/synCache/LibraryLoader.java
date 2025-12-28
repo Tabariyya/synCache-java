@@ -1,4 +1,4 @@
-package io.github.waleedsda.synCache;
+package com.tabariyya.synCache;
 
 import java.io.*;
 import java.nio.file.Files;
