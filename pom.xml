@@ -14,7 +14,7 @@
     </properties>
 
     <name>com.tabariyya</name>
-    <description>Custom auth for java</description>
+    <description>SynCache Binding For Java</description>
     <url>https://github.com/tabariyya/synCache-java.git</url>
 
     <licenses>
