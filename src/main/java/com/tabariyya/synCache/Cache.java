@@ -7,8 +7,8 @@ public class Cache {
     }
 
 
-    public Cache(String brokerUrl, String BrokerToken, long maxNoOfEntries) {
-        nCreate(brokerUrl, BrokerToken, maxNoOfEntries);
+    public Cache(String BrokerToken, long maxNoOfEntries) {
+        nCreate(BrokerToken, maxNoOfEntries);
     }
 
     public void set(String nameSpace, String id, Object value, Long ttl) {
@@ -43,7 +43,7 @@ public class Cache {
 
 
     // ---- Native declarations ----
-    private native void nCreate(String uri, String BrokerToken, long maxEntries);
+    private native void nCreate(String BrokerToken, long maxEntries);
 
     private native void nSet(String nameSpace, String id, byte[] value, Long ttl);
 

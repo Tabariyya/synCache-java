@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 public class CacheIntegrationTest {
 
-    private static final String TEST_BROKER_URL = "wss://broker.syncache.tabariyya.com/";
     private static final String TEST_TOKEN = System.getenv("BROKER_TOKEN");
 
     private Cache cache;
@@ -24,7 +23,7 @@ public class CacheIntegrationTest {
         assumeTrue(TEST_TOKEN != null && !TEST_TOKEN.isEmpty(),
                 "BROKER_TOKEN environment variable must be set for integration tests");
 
-        cache = new Cache(TEST_BROKER_URL, TEST_TOKEN, 1000);
+        cache = new Cache(TEST_TOKEN, 1000);
     }
 
     @AfterEach

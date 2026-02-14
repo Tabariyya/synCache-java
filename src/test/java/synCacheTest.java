@@ -12,7 +12,7 @@ public class synCacheTest {
 
     @Test
     void benchmarkSynCache() {
-        Cache ctrl = new Cache("wss://broker.syncache.tabariyya.com/", token, 100);
+        Cache ctrl = new Cache(token, 100);
         User user = new User();
         user.setEmail("guest@guest");
         user.setUsername("guest");
