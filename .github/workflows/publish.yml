@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout code (with LFS)
         uses: actions/checkout@v3
+        with:
+          lfs: true
 
       - name: Set up JDK 24
         uses: actions/setup-java@v3
@@ -37,5 +39,4 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y gnupg ca-certificates mono-complete
-          mvn clean deploy -Prelease -DskipTests -P sign-artifacts -Dgpg.executable=gpg -Dgpg.passphrase="$GPG_PASSPHRASE"
-
+          mvn clean deploy -Prelease -DskipTests -Dgpg.executable=gpg -Dgpg.passphrase="$GPG_PASSPHRASE"
