@@ -12,7 +12,7 @@ public class Serializer {
     // DSL-JSON is not thread-safe → use ThreadLocal
     private static final ThreadLocal<DslJson<Object>> dslThreadLocal =
             ThreadLocal.withInitial(DslJson::new);
-    private static final DslJson<Object> dslJson = new DslJson<>(Settings.withRuntime());
+    private static final DslJson<Object> dslJson = new DslJson<>(Settings.withRuntime().allowArrayFormat(true).includeServiceLoader());
 
     public static <T> byte[] toBytes(T obj) {
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
