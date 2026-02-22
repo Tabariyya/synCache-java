@@ -42,13 +42,13 @@ public class CacheableTest {
 
     @Test
     void testCacheableSimple() {
-        Person r1 = svc.getUser(123);
+        svc.getUser(123);
         assertEquals(1, callCount);
 
-        Person r2 = svc.getUser(123);
+        svc.getUser(123);
         assertEquals(1, callCount);
 
-        Person r3 = svc.getUser(456);
+        svc.getUser(456);
         assertEquals(2, callCount);
     }
 
