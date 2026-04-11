@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 public class CacheIntegrationTest {
 
-    private static final String TEST_TOKEN = System.getenv("BROKER_TOKEN");
+    private static final String TEST_TOKEN = "eyJhbGciOiJFUzI1NiJ9.eyJicm9rZXJVUkwiOiJ3c3M6Ly9icm9rZXIuc3luY2FjaGUudGFiYXJpeXlhLmNvbSIsImNvbXBhbnlOYW1lIjoiVGFiYXJpeXlhIiwiaW5zdGFuY2VOdW1iZXIiOjMwLCJwcm9qZWN0TmFtZSI6InN5bkNhY2hlIiwiZXhwIjoxODAyNzA3MjA1LCJ0eXBlIjoiSU5TVEFOQ0UiLCJpYXQiOjE3NzExNzEzMDB9.e_d0RDuYbA6nlfBJcM89ZSe6d9AQZiSOBYNYTRK8m7v2xSnXRoKFLQ02-j37mARp8HNmCMXoP3W-hhjUBs62iQ";
 
     private Cache cache;
 
@@ -392,35 +392,35 @@ public class CacheIntegrationTest {
         assertEquals(value, retrieved);
     }
 
-//    @Test
-//    @DisplayName("Cache respects max entries limit")
-//    void testMaxEntriesLimit() {
-//        // Create cache with small limit
-//        Cache smallCache = new Cache(TEST_BROKER_URL, TEST_TOKEN, 10);
-//        String namespace = "limit-test";
-//
-//        try {
-//            // Insert more entries than the limit
-//            for (int i = 0; i < 20; i++) {
-//                smallCache.set(namespace, "key-" + i, "value-" + i);
-//            }
-//
-//            // Some keys might be evicted by LRU policy
-//            int foundCount = 0;
-//            for (int i = 0; i < 20; i++) {
-//                if (smallCache.get(namespace, "key-" + i, String.class) != null) {
-//                    foundCount++;
-//                }
-//            }
-//
-//            System.out.println("Found " + foundCount + " out of 20 inserted keys with limit 10");
-//
-//            // Should not exceed limit (plus some buffer for implementation details)
-//            assertTrue(foundCount <= 15, "Should respect max entries limit");
-//        } finally {
-//            smallCache.evict();
-//        }
-//    }
+    @Test
+    @DisplayName("Cache respects max entries limit")
+    void testMaxEntriesLimit() {
+        // Create cache with small limit
+        Cache smallCache = new Cache(TEST_TOKEN, 10);
+        String namespace = "limit-test";
+
+        try {
+            // Insert more entries than the limit
+            for (int i = 0; i < 20; i++) {
+                smallCache.set(namespace, "key-" + i, "value-" + i);
+            }
+
+            // Some keys might be evicted by LRU policy
+            int foundCount = 0;
+            for (int i = 0; i < 20; i++) {
+                if (smallCache.get(namespace, "key-" + i, String.class) != null) {
+                    foundCount++;
+                }
+            }
+
+            System.out.println("Found " + foundCount + " out of 20 inserted keys with limit 10");
+
+            // Should not exceed limit (plus some buffer for implementation details)
+            assertTrue(foundCount <= 15, "Should respect max entries limit");
+        } finally {
+            smallCache.evict();
+        }
+    }
 
     @Test
     @DisplayName("Test serialization/deserialization with complex object")
