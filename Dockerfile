@@ -7,6 +7,6 @@ COPY src ./src
 
 ARG BROKER_TOKEN
 ENV BROKER_TOKEN=${BROKER_TOKEN}
-
-RUN mvn clean install -P test
+RUN echo $BROKER_TOKEN
+CMD ["mvn", "clean", "test"]
 

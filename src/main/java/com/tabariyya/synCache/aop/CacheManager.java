@@ -1,6 +1,7 @@
 package com.tabariyya.synCache.aop;
 
 import com.tabariyya.synCache.Cache;
+import com.tabariyya.synCache.aop.agent.AgentLoader;
 
 public final class CacheManager {
 

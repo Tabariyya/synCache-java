@@ -7,11 +7,9 @@ import java.time.Instant;
 
 public class synCacheTest {
 
-    String token = "eyJhbGciOiJFUzI1NiJ9.eyJicm9rZXJVUkwiOiJ3c3M6Ly9icm9rZXIuc3luY2FjaGUudGFiYXJpeXlhLmNvbSIsImNvbXBhbnlOYW1lIjoiVGFiYXJpeXlhIiwiaW5zdGFuY2VOdW1iZXIiOjMwLCJwcm9qZWN0TmFtZSI6InN5bkNhY2hlIiwiZXhwIjoxODAyNzA3MjA1LCJ0eXBlIjoiSU5TVEFOQ0UiLCJpYXQiOjE3NzExNzEzMDB9.e_d0RDuYbA6nlfBJcM89ZSe6d9AQZiSOBYNYTRK8m7v2xSnXRoKFLQ02-j37mARp8HNmCMXoP3W-hhjUBs62iQ";
-
-
     @Test
     void benchmarkSynCache() {
+        String token = System.getenv("BROKER_TOKEN");
         Cache ctrl = new Cache(token, 100);
         User user = new User();
         user.setEmail("guest@guest");

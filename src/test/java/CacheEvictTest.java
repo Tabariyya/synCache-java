@@ -1,8 +1,9 @@
-import com.tabariyya.synCache.aop.annotations.CacheEvict;
+import com.tabariyya.myplugin.Innit;
 import com.tabariyya.synCache.aop.CacheManager;
-import com.tabariyya.synCache.aop.annotations.Cacheable;
+import com.tabariyya.synCache.aop.agent.AgentLoader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import services.TestService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,6 +13,9 @@ class CacheEvictTest {
 
     @BeforeEach
     void setup() {
+        System.setProperty("jdk.attach.allowAttachSelf", "true");
+        AgentLoader.install();
+        new Innit();
         CacheManager.initialize(System.getenv("BROKER_TOKEN"), 100);
         CacheManager.getInstance().evict("users");
     }
@@ -76,31 +80,4 @@ class CacheEvictTest {
         assertNull(CacheManager.getInstance().get("users", "7", Integer.class));
     }
 
-
-    static class TestService {
-
-        @Cacheable(namespace = "users", key = "#id")
-        public int loadUser(int id) {
-            return id;
-        }
-
-        @CacheEvict(namespace = "users", key = "#id")
-        public void evictUser(int id) {
-        }
-
-        @CacheEvict(namespace = "users", allEntries = true)
-        public void evictAll() {
-        }
-
-        @CacheEvict(namespace = "users", key = "#id")
-        public int evictAndReturn(int id) {
-            return id;
-        }
-
-        @CacheEvict(namespace = "users", key = "#result")
-        public int evictByResult(int id) {
-            return id;
-        }
-
-    }
 }
