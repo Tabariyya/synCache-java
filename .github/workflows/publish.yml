@@ -37,7 +37,7 @@ jobs:
           if [ "$OLD" != "$NEW" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
-            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Build and deploy via Docker
