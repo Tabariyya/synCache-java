@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.tabariyya</groupId>
-    <artifactId>synCache</artifactId>
-    <version>1.0.4</version>
+    <artifactId>syncache</artifactId>
+    <version>1.0.5</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -15,7 +15,12 @@
 
     <name>com.tabariyya</name>
     <description>SynCache Binding For Java</description>
-    <url>https://github.com/tabariyya/synCache-java.git</url>
+    <url>https://syncache.tabariyya.com</url>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/Tabariyya/synCache-java/issues</url>
+    </issueManagement>
 
     <licenses>
         <license>
