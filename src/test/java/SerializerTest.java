@@ -3,6 +3,8 @@ import models.ComplexPojo;
 import models.SimplePojo;
 import org.junit.jupiter.api.Test;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -370,6 +372,17 @@ public class SerializerTest {
         Date result = Serializer.fromBytes(bytes, Date.class);
         assertNotNull(result);
         assertEquals(now.getTime(), result.getTime());
+    }
+
+    @Test
+    public void testInstantSerialization() {
+        Instant now = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+        byte[] bytes = Serializer.toBytes(now);
+        assertNotNull(bytes);
+
+        Instant result = Serializer.fromBytes(bytes, Instant.class);
+        assertNotNull(result);
+        assertEquals(now, result);
     }
 
     @Test
